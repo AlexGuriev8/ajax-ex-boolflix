@@ -9,6 +9,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 </head>
 <body>
-    <script src="js/main.js"></script>
+    <input type="text" name="" class="search-movie_input">
+    <button class="search-movie_btn">Search</button>
+    <div class="movie-list"></div>
+   
+
+    <!-- Template Handlebars -->
+    <script id="movie-template" type="text/x-handlebars-template">
+        <ul>
+          <li>
+            <span>Titolo: </span>
+            <span>{{ movieTitle }}</span>
+          </li>
+          <li>
+            <span >Titolo Originale: </span>
+            <span>{{ movieOriginalTitle }}</span>
+          </li>
+          <li>Lingua Originale: {{ movieOriginalLanguage }}</li>
+          <li>Voto: {{ movieVote }}</li>
+        </ul>
+      </script>
+     <script src="js/main.js"></script>
 </body>
 </html>
