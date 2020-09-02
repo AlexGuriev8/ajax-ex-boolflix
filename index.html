@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 </head>
 <body>
-    <input type="text" name="" class="search-movie_input">
+    <input type="text" name="" class="search-movie_input" placeholder="Cerca">
     <button class="search-movie_btn">Search</button>
     <div class="movie-list"></div>
    
@@ -25,8 +25,14 @@
             <span >Titolo Originale: </span>
             <span>{{ movieOriginalTitle }}</span>
           </li>
-          <li>Lingua Originale: {{ movieOriginalLanguage }}</li>
-          <li>Voto: {{ movieVote }}</li>
+          <li>
+            <span>Lingua: </span>
+            <span>{{ movieOriginalLanguage }}</span>
+          </li>
+          <li>
+            <span>Voto: </span>
+            <span>{{ movieVote }}</span>
+          </li>
         </ul>
       </script>
      <script src="js/main.js"></script>

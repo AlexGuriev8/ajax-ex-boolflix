@@ -3,9 +3,19 @@ $(document).ready(function(){
     var source = $('#movie-template').html();
     var template = Handlebars.compile(source);
     $('.search-movie_btn').click(function () {
+        printMovie();
+    });
+
+    $(document).keyup(function (event) {
+        if (event.which == 13 || event.keyCode == 13) {
+           printMovie();
+        }
+     
+    });
+
+    function printMovie() {
         $('.movie-list').text('');
         var newSearch = $('.search-movie_input').val();
-        console.log(newSearch);
         $.ajax(
             {
                 url: 'https://api.themoviedb.org/3/search/movie',
@@ -30,17 +40,17 @@ $(document).ready(function(){
                         var html = template(movieToPrint);
                         $('.movie-list').append(html);
                     }
+                    $('.search-movie_input').val('');
                 },
                 error: function () {
-                    alert("E' avvenuto un errore. " + errore);
+                    alert("E' avvenuto un errore. ");
                 }
             }
         );
-
-       
-    });
-   
+    }
 });
+
+  
 
 
  
