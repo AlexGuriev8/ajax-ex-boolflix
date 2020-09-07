@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolflix</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 </head>
@@ -18,6 +19,10 @@
     <script id="movie-template" type="text/x-handlebars-template">
         <ul>
           <li>
+            <span>Tipo: </span>
+            <span>{{ tipo }}</span>
+          </li>
+          <li>
             <span>Titolo: </span>
             <span>{{ movieTitle }}</span>
           </li>
@@ -27,11 +32,11 @@
           </li>
           <li>
             <span>Lingua: </span>
-            <span>{{ movieOriginalLanguage }}</span>
+            <span>{{{movieOriginalLanguage }}}</span>
           </li>
           <li>
             <span>Voto: </span>
-            <span>{{ movieVote }}</span>
+            <span>{{{movieVote}}}</span>
           </li>
         </ul>
       </script>
