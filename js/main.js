@@ -1,23 +1,17 @@
 $(document).ready(function(){
     
     $('.search-movie_btn').click(function () {
-        var url1 = 'https://api.themoviedb.org/3/search/movie';
-        var url2 = 'https://api.themoviedb.org/3/search/tv';
         var newSearch = $('.search-movie_input').val();
         reset();
-        printFilmTv(newSearch,url1,'Film');
-        printFilmTv(newSearch,url2,'Tv');
+        init(newSearch);
        
     });
 
     $(document).keyup(function (event) {
-        var url1 = 'https://api.themoviedb.org/3/search/movie';
-        var url2 = 'https://api.themoviedb.org/3/search/tv';
-        var newSearch = $('.search-movie_input').val(); 
+        var newSearch = $('.search-movie_input').val();
         if (event.which == 13 || event.keyCode == 13) {
             reset();
-            printFilmTv(newSearch, url1, 'Film');
-            printFilmTv(newSearch, url2, 'Tv');      
+            init(newSearch);      
         }
     });
 });
@@ -111,7 +105,6 @@ function reset(){
     $('.search-movie_input').val('');
 }
 
-
 function noResult (tipo){
     var source = $('#no-result-template').html();
     var template = Handlebars.compile(source);
@@ -126,3 +119,9 @@ function noResult (tipo){
     }  
 }
  
+function init(data){
+    var url1 = 'https://api.themoviedb.org/3/search/movie';
+    var url2 = 'https://api.themoviedb.org/3/search/tv';
+    printFilmTv(data, url1, 'Film');
+    printFilmTv(data, url2, 'Tv');
+}
