@@ -1,72 +1,44 @@
 $(document).ready(function(){
-
     
     $('.search-movie_btn').click(function () {
+        var url1 = 'https://api.themoviedb.org/3/search/movie';
+        var url2 = 'https://api.themoviedb.org/3/search/tv';
         var newSearch = $('.search-movie_input').val();
         reset();
-        printFilm(newSearch);
-        printTv(newSearch);
+        printFilmTv(newSearch,url1,'Film');
+        printFilmTv(newSearch,url2,'Tv');
        
     });
 
     $(document).keyup(function (event) {
-        var newSearch = $('.search-movie_input').val();
+        var url1 = 'https://api.themoviedb.org/3/search/movie';
+        var url2 = 'https://api.themoviedb.org/3/search/tv';
+        var newSearch = $('.search-movie_input').val(); 
         if (event.which == 13 || event.keyCode == 13) {
-           reset();
-           printFilm(newSearch);
-           printTv(newSearch);      
+            reset();
+            printFilmTv(newSearch, url1, 'Film');
+            printFilmTv(newSearch, url2, 'Tv');      
         }
-     
     });
-
-   
 });
 
-function printFilm(data) {
+function printFilmTv(data,url,tipo) {
     
     $.ajax(
         {
-            url: 'https://api.themoviedb.org/3/search/movie',
+            url: url,
             method: "GET",
             data: {
                 api_key: '446128a52aa8b6fbb4623283f5c34042',
                 query: data,
                 language: 'it-IT'
-
             },
             success: function (risposta) {
                 if(risposta.total_results > 0){
-                    printResult(risposta,'Film');
+                    printResult(risposta,tipo);
                 }else{
-                    noResult();
+                    noResult(tipo);
                 }
-                
-            },
-            error: function () {
-                alert("E' avvenuto un errore. ");
-            }
-        }
-    );
-}
-function printTv(data) {
-    
-    $.ajax(
-        {
-            url: 'https://api.themoviedb.org/3/search/tv',
-            method: "GET",
-            data: {
-                api_key: '446128a52aa8b6fbb4623283f5c34042',
-                query: data,
-                language: 'it-IT'
-
-            },
-            success: function (risposta) {
-                if(risposta.total_results > 0){
-                    printResult(risposta,'Tv');
-                }else{
-                    noResult();
-                }
-                
             },
             error: function () {
                 alert("E' avvenuto un errore. ");
@@ -97,7 +69,11 @@ function printTv(data) {
               movieVote: stars(movieInfo.vote_average)
           };
           var html = template(movieToPrint);
-          $('.movie-list').append(html);
+          if (tipo == 'Film'){
+              $('.movie-list-film').append(html);
+          } else{
+              $('.movie-list-tv').append(html);
+          }  
       }
   }
 
@@ -130,18 +106,23 @@ function printTv(data) {
   }
 
 function reset(){
-    $('.movie-list').empty();
+    $('.movie-list-film').empty();
+    $('.movie-list-tv').empty();
     $('.search-movie_input').val('');
 }
 
 
-function noResult (){
+function noResult (tipo){
     var source = $('#no-result-template').html();
     var template = Handlebars.compile(source);
     var context = {
-        noResult: 'Non ci sono risultati'
+        noResult: 'Non ci sono risultati nella sezione' + ' '+ tipo
     };
     var html = template(context);
-    $('.movie-list').append(html);
+    if (tipo == 'Film') {
+        $('.movie-list-film').append(html);
+    } else {
+        $('.movie-list-tv').append(html);
+    }  
 }
  
