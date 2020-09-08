@@ -10,43 +10,69 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 </head>
 <body>
-    <input type="text" name="" class="search-movie_input" placeholder="Cerca">
-    <button class="search-movie_btn">Search</button>
-    <h2>FILM</h2>
-    <div class="movie-list-film"></div>
-    <h2>Serie TV</h2>
-    <div class="movie-list-tv"></div>
-   
-
-    <!-- Template Handlebars -->
-    <script id="movie-template" type="text/x-handlebars-template">
-        <ul>
-          <li>
-            <span>Tipo: </span>
-            <span>{{ tipo }}</span>
-          </li>
-          <li>
-            <span>Titolo: </span>
-            <span>{{ movieTitle }}</span>
-          </li>
-          <li>
-            <span >Titolo Originale: </span>
-            <span>{{ movieOriginalTitle }}</span>
-          </li>
-          <li>
-            <span>Lingua: </span>
-            <span>{{{movieOriginalLanguage }}}</span>
-          </li>
-          <li>
-            <span>Voto: </span>
-            <span>{{{movieVote}}}</span>
-          </li>
-          <li>
-            <span>Immagine: </span>
-            <span>{{{poster}}}</span>
-          </li>
+  <nav>
+    <div class="nav-left">
+      <div class="logo">
+        <img class="logo-img" src="https://i.ibb.co/9rq9pVh/netflix-log.png" alt="netflix-logo" />
+      </div>
+      <div class="nav-menu">
+        <ul class="nav-list">
+          <li>Home</li>
+          <li>Serie Tv</li>
+          <li>Film</li>
+          <li>Originali</li>
+          <li>Aggiunti di recente</li>
+          <li>La mia Lista</li>
         </ul>
-      </script>
+      </div>
+      </div>
+      <div class="nav-searchbar">
+        <input type="text" name="" class="search-movie_input" placeholder="Cerca per Titolo">
+        <i class="fas fa-search search-movie_btn"></i>
+        </input>
+      </div>
+  </nav>
+    <div class="movie-list-film">
+    </div>
+    <div class="movie-list-tv">
+    </div>
+   
+<script id="movie-template" type="text/x-handlebars-template">
+    <div class="cover-film">
+      <span class="cover-img">{{{poster}}}</span>
+      <ul class="cover-film-details">
+        <li class="title">
+           <h6>Titolo: </h6>
+           <span>{{ movieTitle }}</span>
+        </li>
+        <li class="original-title">
+          <h6>Titolo originale: </h6>
+          <span>{{ movieOriginalTitle }}</span>
+        </li>
+        <li class="original-language">
+          <h6>Lingua: </h6>
+          <span>{{{ movieOriginalLanguage }}}</span>
+        </li>
+        <li class="vote-average">
+          <h6>Voto: </h6>
+          <span>{{{ movieVote }}}</span>
+        </li>
+        <li class="tipo-serie">
+          <h6>Tipo: </h6>
+          <span>{{ tipo }}</span>
+        </li>
+        <li class="overview">
+          <h6>Trama: </h6>
+          <div class="scroll">
+            <p>{{ overview }}</p>
+          </div>
+          
+        </li>
+      </ul> 
+    </div>
+    
+  </script>
+
 
       <script id="no-result-template" type="text/x-handlebars-template">
         <div>{{noResult}}</div>
