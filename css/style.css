@@ -172,3 +172,42 @@ nav {
   animation: scroll-up 20s linear infinite;
 }
 
+@media screen and (max-width: 1280px) {
+  .movie-list-film,
+.movie-list-tv
+{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+  }
+
+
+@media screen and (max-width: 896px) {
+  .movie-list-film,
+.movie-list-tv
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+nav ul li{
+display:none;
+}
+  
+}
+@media screen and (max-width: 898px) {
+ .movie-list-film,
+.movie-list-tv
+{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin-top: 5px;
+}
+nav ul li{
+display:none;
+}
+}
