@@ -14,7 +14,23 @@ $(document).ready(function(){
             init(newSearch);      
         }
     });
+
+    $('.home').click(function () {
+        reset();
+        trendMoviesHomePage('Tv');
+    });
+ 
 });
+
+
+
+
+function trendMoviesHomePage(data) {
+    PopularThisWeek = "https://api.themoviedb.org/3/trending/all/week";
+    
+    var titolo = "";
+    printFilmTv(titolo, PopularThisWeek,data);
+}
 
 function printFilmTv(data,url,tipo) {
     

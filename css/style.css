@@ -6,6 +6,7 @@
 
 body {
   font-family: "Martel Sans", sans-serif;
+  background-color: #1e3f4f;
 }
 nav {
   height: 80px;
@@ -62,24 +63,25 @@ nav {
     width: 15px;
 }
 
-.movie-list-film
+.movie-list-film,
+.movie-list-tv
 {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  height: calc(100vh - 80px);
-  background: linear-gradient(
-    90deg, 
-  rgb(53, 50, 50) 0%, 
-  rgb(31, 18, 18) 50%);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+  margin-top: 10px;
 }
-.movie-list-tv{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+
+.search-movie_input{
+  outline:none;
 }
 
 
+.list{
+   width: 90%;
+   height: calc(100vh - 80px);
+   margin: 0 auto;
+}
 
 .cover-film{
   flex-basis: 250px;
