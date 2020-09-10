@@ -1,5 +1,7 @@
 $(document).ready(function(){
     
+    trendMoviesHomePage('Tv');
+
     $('.search-movie_btn').click(function () {
         var newSearch = $('.search-movie_input').val();
         reset();
