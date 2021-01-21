@@ -213,10 +213,10 @@ nav{
 }
 
 }
-@media screen and (max-width: 450px){
-  .logo{
-    height: 20px;
-    width: 20px;
+
+@media only screen and (max-width: 420px){
+  .logo-img{
+    height: 12px;
   }
 }
 
