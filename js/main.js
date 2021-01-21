@@ -2,19 +2,30 @@ $(document).ready(function(){
     
     trendMoviesHomePage('Tv');
 
-    $('.search-movie_btn').click(function () {
+    $('#search-movie_btn').click(function () {
         var newSearch = $('.search-movie_input').val();
-        reset();
-        init(newSearch);
-       
+    
+        if(newSearch == ""){
+          reset();
+          trendMoviesHomePage('Tv');
+        }else{
+          reset();
+          init(newSearch);
+        }
     });
 
     $(document).keyup(function (event) {
         var newSearch = $('.search-movie_input').val();
-        if (event.which == 13 || event.keyCode == 13) {
+        if(newSearch == ""){
+          reset();
+          trendMoviesHomePage('Tv');
+        }else{
+         if (event.which == 13 || event.keyCode == 13) {
             reset();
             init(newSearch);      
+            }
         }
+        
     });
 
     $('.home').click(function () {
